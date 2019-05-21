@@ -29,10 +29,10 @@
 */
 
 // constants won't change. Used here to set a pin number:
-const int ledPin =  LED_BUILTIN;// the number of the LED pin
+const int ledPin =  9;// the number of the LED pin
 
 // Variables will change:
-int ledState = LOW;             // ledState used to set the LED
+int ledState = HIGH;             // ledState used to set the LED
 
 // Generally, you should use "unsigned long" for variables that hold time
 // The value will quickly become too large for an int to store
