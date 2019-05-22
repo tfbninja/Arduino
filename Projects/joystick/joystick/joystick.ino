@@ -1,14 +1,11 @@
-/*
-  AnalogReadSerial
+#include <pitches.h>
 
-  Reads an analog input on pin 0, prints the result to the Serial Monitor.
-  Graphical representation is available using Serial Plotter (Tools > Serial Plotter menu).
-  Attach the center pin of a potentiometer to pin A0, and the outside pins to +5V and ground.
+int buzzerPin = 8; // buzzer pin (woah)
 
-  This example code is in the public domain.
-
-  http://www.arduino.cc/en/Tutorial/AnalogReadSerial
-*/
+int min = 31;
+int max = 4978;
+int bigMultiplier = 4;
+int smallMultiplier = 1;
 
 // the setup routine runs once when you press reset:
 void setup() {
@@ -22,12 +19,16 @@ void loop() {
   int vX = analogRead(A0);
   int vY = analogRead(A1);
   int button = analogRead(A2);
-  // print out the value you read:
   Serial.print("x: ");
   Serial.println(vX);
   Serial.print("y: ");
   Serial.println(vY);
   Serial.print("b: ");
   Serial.println(button);
-  delay(500);        // delay in between reads for stability
+  if (button == 0) {
+    noTone(buzzerPin);
+  } else {
+    tone(buzzerPin, vX * bigMultiplier + vY * smallMultiplier);
+  }
+  delay(1);
 }
